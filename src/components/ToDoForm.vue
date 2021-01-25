@@ -5,7 +5,7 @@
         Event.preventDefault() 사용
     -->
     <form @submit.prevent="onSubmit">
-        <label for="new-todo-input">
+        <label for="new-todo-input" class="label__lg">
             What needs to be done?
         </label>
         <input 
@@ -14,8 +14,9 @@
             name="new-todo"
             autocomplete="off"
             v-model.lazy.trim="label"
+            class="input__lg"
         />
-        <button type="submit">
+        <button type="submit" class="btn btn__primary btn__lg">
             Add
         </button>
     </form>
