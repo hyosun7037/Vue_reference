@@ -22,7 +22,7 @@
 
 
 </template>
-
+ 
 <script>
 import uniqueId from 'lodash.uniqueid';
 // props를 등록하는 방법 2가지
