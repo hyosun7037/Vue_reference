@@ -9,10 +9,10 @@
   <div id="app">
     <h1>To-do list</h1>
     <ul>
-      <li>
+      <li v-for="item in ToDoItems" :key="item.id">
         <!-- lable 미 전달시 console에서 오류남 -->
         <!-- v-bind 속성전달 :attribute로 생략하여 사용가능 -->
-        <to-do-item label="My Todo Item" :done="true"></to-do-item>
+        <to-do-item :label="item.label" :done="item.done" :id="item.id"></to-do-item>
       </li>
     </ul>
   </div>
@@ -24,6 +24,7 @@
 
 // vue 파일을 <script> 최상단에 import 시켜줌
 import ToDoItem from './components/ToDoItem';
+import uniqueId from 'lodash.uniqueid';
 
 // 반드시 기본으로 export되는 JS 오브젝트가 있어야함!
 // 로컬 컴포넌트 등록, 컴포넌트 인풋(props)정의, 로컬 상태 관리, 메서드 정의 등
@@ -33,6 +34,18 @@ export default {
   components: {
     // 여기 등록하면 로컬 컴포넌트, 상위 컴포넌트 내부에서만 사용가능, import해서 사용해야함
     ToDoItem
+  },
+  // 항목 배열을 가져옴, Array in Field를 포함하는 data 속성 추가
+  data(){
+    return{
+      // 배열의 이름
+      ToDoItems:[
+        { id:uniqueId('todo-'), label: 'Learn Vue', done: false },
+        { id:uniqueId('todo-'), label: 'Create a Vue project with the CLI', done: true },
+        { id:uniqueId('todo-'), label: 'Have fun', done: true },
+        { id:uniqueId('todo-'), label: 'Create a to-do list', done: false }
+      ]
+    }
   }
 }
 

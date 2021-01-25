@@ -17,27 +17,27 @@
 
 
     <!-- 디렉티브 
-        v- 접두사가 있는 특수 속성
-    -->
-
+        v- 접두사가 있는 특수 속성-->
 
 </template>
  
 <script>
-import uniqueId from 'lodash.uniqueid';
+// import uniqueId from 'lodash.uniqueid';
 // props를 등록하는 방법 2가지
 // 1. Array 
 // 2. Objecct
 export default {
     props:{
         label:{required:true, type:String},
-        done:{default:false, type:Boolean}
+        done:{default:false, type:Boolean},
+        // 고유한 항목을 만들기 위해 id 생성
+        id:{required:true, type:String}
     },
     data(){
         return{
             isDone:this.done,
             // uniqueId() 지정된 접두사 반환
-            id:uniqueId('todo-')
+            // id:uniqueId('todo-')
         }
     }
 }
